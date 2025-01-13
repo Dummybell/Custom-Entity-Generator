@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Entity Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Custom Entity Generator</h1>
+    <form id="generatorForm">
+      <div class="input-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div class="input-group">
+        <label for="entityType">Entity Type</label>
+        <input type="text" id="entityTypeSearch" placeholder="Search for an entity type...">
+        <select id="entityType" name="entityType" size="5">
+            <option value="axolotl">Axolotl</option>
+            <option value="bee">Bee</option>
+            <option value="cat">Cat</option>
+            <option value="creeper">Creeper</option>
+            <option value="enderman">Enderman</option>
+            <option value="fox">Fox</option>
+            <option value="frog">Frog</option>
+            <option value="goat">Goat</option>
+            <option value="llama">Llama</option>
+            <option value="minecart">Minecart</option>
+            <option value="mooshroom">Mooshroom</option>
+            <option value="ocelot">Ocelot</option>
+            <option value="panda">Panda</option>
+            <option value="parrot">Parrot</option>
+            <option value="pig">Pig</option>
+            <option value="rabbit">Rabbit</option>
+            <option value="salmon">Salmon</option>
+            <option value="sheep">Sheep</option>
+            <option value="tropical fish">Tropical Fish</option>
+            <option value="villager">Villager</option>
+            <option value="wolf">Wolf</option>
+            <option value="zombie villager">Zombie Villager</option>
+            <option value="blaze">Blaze</option>
+            <option value="chicken">Chicken</option>
+            <option value="mooshroom">Mooshroom</option>
+            <option value="cow">Cow</option>
+            <option value="cave spider">Cave Spider</option>
+            <option value="ender dragon">Ender Dragon</option>
+            <option value="ghast">Ghast</option>
+            <option value="giant">Giant</option>
+            <option value="iron golem">Iron Golem</option>
+            <option value="magma cube">Magma Cube</option>
+            <option value="slime">Slime</option>
+            <option value="zombie pigman">Zombie Pigman</option>
+            <option value="silverfish">Silverfish</option>
+            <option value="snow golem">Snow Golem</option>
+            <option value="spider">Spider</option>
+            <option value="bat">Bat</option>
+            <option value="witch">Witch</option>
+            <option value="wither">Wither</option>
+            <option value="endermite">Endermite</option>
+            <option value="armor stand">Armor Stand</option>
+            <option value="shulker">Shulker</option>
+            <option value="polar bear">Polar Bear</option>
+            <option value="wither skeleton">Wither Skeleton</option>
+            <option value="stray">Stray</option>
+            <option value="husk">Husk</option>
+            <option value="skeleton">Skeleton</option>
+            <option value="llama spit">Llama Spit</option>
+            <option value="evoker">Evoker</option>
+            <option value="vex">Vex</option>
+            <option value="vindicator">Vindicator</option>
+            <option value="elder guardian">Elder Guardian</option>
+            <option value="normal guardian">Normal Guardian</option>
+            <option value="donkey">Donkey</option>
+            <option value="mule">Mule</option>
+            <option value="llama">Llama</option>
+            <option value="undead horse">Undead Horse</option>
+            <option value="skeleton horse">Skeleton Horse</option>
+            <option value="horse">Horse</option>
+            <option value="dolphin">Dolphin</option>
+            <option value="phantom">Phantom</option>
+            <option value="drowned">Drowned</option>
+            <option value="turtle">Turtle</option>
+            <option value="cod">Cod</option>
+            <option value="puffer fish">Puffer Fish</option>
+            <option value="tropical fish">Tropical Fish</option>
+            <option value="illusioner">Illusioner</option>
+            <option value="pillager">Pillager</option>
+            <option value="ravager">Ravager</option>
+            <option value="wandering trader">Wandering Trader</option>
+            <option value="piglin">Piglin</option>
+            <option value="hoglin">Hoglin</option>
+            <option value="zoglin">Zoglin</option>
+            <option value="strider">Strider</option>
+            <option value="piglin brute">Piglin Brute</option>
+            <option value="glow squid">Glow Squid</option>
+            <option value="allay">Allay</option>
+            <option value="tadpole">Tadpole</option>
+            <option value="warden">Warden</option>
+            <option value="camel">Camel</option>
+            <option value="sniffer">Sniffer</option>
+            <option value="breeze">Breeze</option>
+            <option value="armadillo">Armadillo</option>
+            <option value="bogged">Bogged</option>
+            <option value="creaking">Creaking</option>
+            <option value="zombie">Zombie</option>
+            <option value="squid">Squid</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="health">Health</label>
+        <input type="number" id="health" name="health">
+      </div>
+      <div class="input-group">
+        <label for="damage">Damage</label>
+        <input type="number" id="damage" name="damage">
+      </div>
+      <div class="input-group">
+        <label for="physicalRes">Physical Resistance</label>
+        <input type="number" id="physicalRes" name="physicalRes" value=0>
+      </div>
+      <div class="input-group">
+        <label for="lightningRes">Lightning Resistance</label>
+        <input type="number" id="lightningRes" name="lightningRes" value=0>
+      </div>
+      <div class="input-group">
+        <label for="magicRes">Magic Resistance</label>
+        <input type="number" id="magicRes" name="magicRes" value=0>
+      </div>
+      <div class="input-group">
+        <label for="fireRes">Fire Resistance</label>
+        <input type="number" id="fireRes" name="fireRes" value=0>
+      </div>
+      <div class="input-group">
+        <label for="bleedRes">Bleed Status Resistance</label>
+        <input type="number" id="bleedRes" name="bleedRes">
+      </div>
+      <div class="input-group">
+        <label for="shockRes">Shock Status Resistance</label>
+        <input type="number" id="shockRes" name="shockRes">
+      </div>
+      <div class="input-group">
+        <label for="curseRes">Curse Status Resistance</label>
+        <input type="number" id="curseRes" name="curseRes">
+      </div>
+      <div class="input-group">
+        <label for="burnRes">Burn Status Resistance</label>
+        <input type="number" id="burnRes" name="burnRes">
+      </div>
+      <div class="input-group">
+        <label for="phaseChange">Phase Change Option</label>
+        <select id="phaseChange" name="phaseChange">
+          <option value="none">None</option>
+          <option value="lowHealth">Low Health</option>
+          <option value="criticalHealth">Critical Health</option>
+        </select>
+      </div>
+      <div class="input-group hidden" id="phaseChangePercentageGroup">
+        <label for="phaseChangePercentage">Phase Change at Health Percentage</label>
+        <input type="number" id="phaseChangePercentage" name="phaseChangePercentage">
+      </div>
+      <div class="input-group">
+        <label for="attackSet">Attack Set</label>
+        <select id="attackSet" name="attackSet">
+          <option value="none">None</option>
+          <option value="melee">Melee</option>
+          <option value="ranged">Ranged</option>
+          <option value="magic">Magic</option>
+        </select>
+      </div>
+      <button type="button" id="generateBtn" class="btn">Generate</button>
+    </form>
+    <div class="output">
+      <h2>Generated Code</h2>
+      <textarea id="generatedCode" readonly></textarea>
+      <button type="button" id="copyBtn" class="btn">Copy</button>
+    </div>
+  </div>
+  <script>
+    const phaseChange = document.getElementById('phaseChange');
+    const phaseChangePercentageGroup = document.getElementById('phaseChangePercentageGroup');
+    const generateBtn = document.getElementById('generateBtn');
+    const generatedCode = document.getElementById('generatedCode');
+
+    phaseChange.addEventListener('change', () => {
+      if (phaseChange.value !== 'none') {
+        phaseChangePercentageGroup.classList.remove('hidden');
+      } else {
+        phaseChangePercentageGroup.classList.add('hidden');
+      }
+    });
+
+    generateBtn.addEventListener('click', () => {
+      const formData = new FormData(document.getElementById('generatorForm'));
+      const name = formData.get('name');
+      const entityType = formData.get('entityType');
+      const health = formData.get('health');
+      const damage = formData.get('damage');
+      const physicalRes = formData.get('physicalRes');
+      const lightningRes = formData.get('lightningRes');
+      const magicRes = formData.get('magicRes');
+      const fireRes = formData.get('fireRes');
+      const bleedRes = formData.get('bleedRes');
+      const shockRes = formData.get('shockRes');
+      const curseRes = formData.get('curseRes');
+      const burnRes = formData.get('burnRes');
+      const phaseChangeOption = formData.get('phaseChange');
+      const phaseChangePercentage = formData.get('phaseChangePercentage');
+      const attackSet = formData.get('attackSet');
+
+      let result = `set {entities_stored::${name}} to "${entityType};${health};${damage};${physicalRes};${lightningRes};${magicRes};${fireRes};${bleedRes};${shockRes};${curseRes};${burnRes}`;
+
+      const optionalParts = [];
+
+      if (phaseChangeOption !== 'none') {
+        optionalParts.push(`${phaseChangeOption};${phaseChangePercentage}`);
+      }
+
+      if (attackSet !== 'none') {
+        optionalParts.push(`${attackSet}`);
+      }
+
+      if (optionalParts.length > 0) {
+        result += `;${optionalParts.join(';')}`;
+      }
+
+      
+      result += `"`;
+
+      generatedCode.value = result;
+    });
+
+    const entityTypeSearch = document.getElementById('entityTypeSearch');
+    const entityType = document.getElementById('entityType');
+
+    entityTypeSearch.addEventListener('input', () => {
+    const filter = entityTypeSearch.value.toLowerCase();
+    const options = entityType.options;
+
+    for (let i = 0; i < options.length; i++) {
+        const option = options[i];
+        const text = option.text.toLowerCase();
+        option.style.display = text.includes(filter) ? '' : 'none';
+    }
+    });
+
+    const copyBtn = document.getElementById('copyBtn');
+
+    copyBtn.addEventListener('click', () => {
+    generatedCode.select();
+    document.execCommand('copy');
+    });
+
+  </script>
+</body>
+</html>
