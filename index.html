@@ -134,19 +134,27 @@
       </div>
       <div class="input-group">
         <label for="bleedRes">Bleed Status Resistance</label>
-        <input type="number" id="bleedRes" name="bleedRes">
+        <input type="number" id="bleedRes" name="bleedRes" value=300>
       </div>
       <div class="input-group">
         <label for="shockRes">Shock Status Resistance</label>
-        <input type="number" id="shockRes" name="shockRes">
+        <input type="number" id="shockRes" name="shockRes" value=300>
       </div>
       <div class="input-group">
         <label for="curseRes">Curse Status Resistance</label>
-        <input type="number" id="curseRes" name="curseRes">
+        <input type="number" id="curseRes" name="curseRes" value=300>
       </div>
       <div class="input-group">
         <label for="burnRes">Burn Status Resistance</label>
-        <input type="number" id="burnRes" name="burnRes">
+        <input type="number" id="burnRes" name="burnRes" value=300>
+      </div>
+      <div class="input-group">
+        <label for="dropTable">Drop Table</label>
+        <input type="text" id="dropTable" name="dropTable" value="-">
+      </div>
+      <div class="input-group">
+        <label for="attackSet">Attack Set</label>
+        <input type="text" id="attackSet" name="attackSet" value="-">
       </div>
       <div class="input-group">
         <label for="phaseChange">Phase Change Option</label>
@@ -159,15 +167,6 @@
       <div class="input-group hidden" id="phaseChangePercentageGroup">
         <label for="phaseChangePercentage">Phase Change at Health Percentage</label>
         <input type="number" id="phaseChangePercentage" name="phaseChangePercentage">
-      </div>
-      <div class="input-group">
-        <label for="attackSet">Attack Set</label>
-        <select id="attackSet" name="attackSet">
-          <option value="none">None</option>
-          <option value="melee">Melee</option>
-          <option value="ranged">Ranged</option>
-          <option value="magic">Magic</option>
-        </select>
       </div>
       <button type="button" id="generateBtn" class="btn">Generate</button>
     </form>
@@ -205,11 +204,12 @@
       const shockRes = formData.get('shockRes');
       const curseRes = formData.get('curseRes');
       const burnRes = formData.get('burnRes');
+      const dropTable = formData.get('dropTable');
+      const attackSet = formData.get('attackSet');
       const phaseChangeOption = formData.get('phaseChange');
       const phaseChangePercentage = formData.get('phaseChangePercentage');
-      const attackSet = formData.get('attackSet');
 
-      let result = `set {entities_stored::${name}} to "${entityType};${health};${damage};${physicalRes};${lightningRes};${magicRes};${fireRes};${bleedRes};${shockRes};${curseRes};${burnRes}`;
+      let result = `set {entities_stored::${name}} to "${entityType};${health};${damage};${physicalRes};${lightningRes};${magicRes};${fireRes};${bleedRes};${shockRes};${curseRes};${burnRes};${dropTable};${attackSet}`;
 
       const optionalParts = [];
 
@@ -217,9 +217,6 @@
         optionalParts.push(`${phaseChangeOption};${phaseChangePercentage}`);
       }
 
-      if (attackSet !== 'none') {
-        optionalParts.push(`${attackSet}`);
-      }
 
       if (optionalParts.length > 0) {
         result += `;${optionalParts.join(';')}`;
