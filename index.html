@@ -168,7 +168,19 @@
       </div>
       <div class="input-group hidden" id="phaseChangePercentageGroup">
         <label for="phaseChangePercentage">Phase Change at Health Percentage</label>
-        <input type="number" id="phaseChangePercentage" name="phaseChangePercentage">
+        <input type="number" id="phaseChangePercentage" name="phaseChangePercentage" value=50>
+      </div>
+      <div class="input-group hidden" id="phaseChangeAppear">
+        <label for="phaseChangeAppear">Appears in Second phase</label>
+        <select id="phaseChangeAppear" name="phaseChangeAppear">
+          <option value="spawn">Spawns</option>
+          <option value="riseFromGround">Rises From Ground</option>
+          <option value="crashFromSky">Crashes from Sky</option>
+        </select>
+      </div>
+      <div class="input-group hidden" id="phaseNewBoss">
+        <label for="phaseNewBoss">Name of the next phase boss</label>
+        <input type="text" id="phaseNewBoss" name="phaseNewBoss">
       </div>
       <button type="button" id="generateBtn" class="btn">Generate</button>
     </form>
@@ -181,14 +193,23 @@
   <script>
     const phaseChange = document.getElementById('phaseChange');
     const phaseChangePercentageGroup = document.getElementById('phaseChangePercentageGroup');
+    const phaseChangeAppear = document.getElementById('phaseChangeAppear');
     const generateBtn = document.getElementById('generateBtn');
     const generatedCode = document.getElementById('generatedCode');
 
     phaseChange.addEventListener('change', () => {
       if (phaseChange.value !== 'none') {
         phaseChangePercentageGroup.classList.remove('hidden');
+        phaseChangeAppear.classList.remove('hidden');
       } else {
         phaseChangePercentageGroup.classList.add('hidden');
+        phaseChangeAppear.classList.add('hidden');
+      }
+      
+      if (phaseChange.value == 'firstPhaseNewBoss') {
+        phaseNewBoss.classList.remove('hidden');
+      } else {
+        phaseNewBoss.classList.add('hidden');
       }
     });
 
@@ -210,15 +231,20 @@
       const attackSet = formData.get('attackSet');
       const phaseChangeOption = formData.get('phaseChange');
       const phaseChangePercentage = formData.get('phaseChangePercentage');
+      const phaseChangeAppear = formData.get('phaseChangeAppear');
+      const phaseNewBoss = formData.get('phaseNewBoss');
 
       let result = `set {entities_stored::${name}} to "${entityType};${health};${damage};${physicalRes};${lightningRes};${magicRes};${fireRes};${bleedRes};${shockRes};${curseRes};${burnRes};${dropTable};${attackSet}`;
 
       const optionalParts = [];
 
       if (phaseChangeOption !== 'none') {
-        optionalParts.push(`${phaseChangeOption};${phaseChangePercentage}`);
+        optionalParts.push(`${phaseChangeOption};${phaseChangePercentage};${phaseChangeAppear}`);
       }
 
+      if (phaseChangeOption == 'firstPhaseNewBoss') {
+        optionalParts.push(`${phaseNewBoss}`);
+      }
 
       if (optionalParts.length > 0) {
         result += `;${optionalParts.join(';')}`;
