@@ -200,16 +200,16 @@
     phaseChange.addEventListener('change', () => {
       if (phaseChange.value !== 'none') {
         phaseChangePercentageGroup.classList.remove('hidden');
-        phaseChangeAppear.classList.remove('hidden');
       } else {
         phaseChangePercentageGroup.classList.add('hidden');
-        phaseChangeAppear.classList.add('hidden');
       }
       
-      if (phaseChange.value == 'firstPhaseNewBoss') {
+      if (phaseChange.value == 'firstPhaseNewBoss' || phaseChange.value == 'secondPhaseNewBoss') {
         phaseNewBoss.classList.remove('hidden');
+        phaseChangeAppear.classList.remove('hidden');
       } else {
         phaseNewBoss.classList.add('hidden');
+        phaseChangeAppear.classList.add('hidden');
       }
     });
 
