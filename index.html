@@ -116,6 +116,8 @@
         <label for="damage">Damage</label>
         <input type="number" id="damage" name="damage">
       </div>
+      
+
       <div class="input-group">
         <label for="physicalRes">Physical Resistance</label>
         <input type="number" id="physicalRes" name="physicalRes" value=0>
@@ -147,7 +149,81 @@
       <div class="input-group">
         <label for="burnRes">Burn Status Resistance</label>
         <input type="number" id="burnRes" name="burnRes" value=300>
+      </div><div class="input-group">
+        <label for="speed">Speed</label>
+        <input type="number" id="speed" name="speed" step="0.1" value="1">
       </div>
+      <div class="input-group">
+        <label for="scale">Scale</label>
+        <input type="number" id="scale" name="scale" step="0.1" value="1">
+      </div>
+      <div class="input-group">
+        <label for="helmet">Helmet</label>
+        <select id="helmet" name="helmet">
+          <option value="none">None</option>
+          <option value="leather helmet">Leather Helmet</option>
+          <option value="chainmail helmet">Chainmail Helmet</option>
+          <option value="iron helmet">Iron Helmet</option>
+          <option value="golden helmet">Golden Helmet</option>
+          <option value="diamond helmet">Diamond Helmet</option>
+          <option value="netherite helmet">Netherite Helmet</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="chestplate">Chestplate</label>
+        <select id="chestplate" name="chestplate">
+          <option value="none">None</option>
+          <option value="leather chestplate">Leather Chestplate</option>
+          <option value="chainmail chestplate">Chainmail Chestplate</option>
+          <option value="iron chestplate">Iron Chestplate</option>
+          <option value="golden chestplate">Golden Chestplate</option>
+          <option value="diamond chestplate">Diamond Chestplate</option>
+          <option value="netherite chestplate">Netherite Chestplate</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="leggings">Leggins</label>
+        <select id="leggings" name="leggings">
+          <option value="none">None</option>
+          <option value="leather leggings">Leather Leggins</option>
+          <option value="chainmail leggings">Chainmail Leggins</option>
+          <option value="iron leggings">Iron Leggins</option>
+          <option value="golden leggings">Golden Leggins</option>
+          <option value="diamond leggings">Diamond Leggins</option>
+          <option value="netherite leggings">Netherite Leggins</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="boots">Boots</label>
+        <select id="boots" name="boots">
+          <option value="none">None</option>
+          <option value="leather boots">Leather Boots</option>
+          <option value="chainmail boots">Chainmail Boots</option>
+          <option value="iron boots">Iron Boots</option>
+          <option value="golden boots">Golden Boots</option>
+          <option value="diamond boots">Diamond Boots</option>
+          <option value="netherite boots">Netherite Boots</option>
+        </select>
+      </div>
+
+      <label for="weapon">Weapon:</label>
+      <select id="weapon" name="weapon">
+        <option value="none">None</option>
+        <option value="diamond sword">Diamond Sword</option>
+        <option value="netherite sword">Netherite Sword</option>
+        <option value="iron sword">Iron Sword</option>
+        <option value="stone sword">Stone Sword</option>
+        <option value="wooden sword">Wooden Sword</option>
+        <option value="diamond axe">Diamond Axe</option>
+        <option value="netherite axe">Netherite Axe</option>
+        <option value="iron axe">Iron Axe</option>
+        <option value="stone axe">Stone Axe</option>
+        <option value="wooden axe">Wooden Axe</option>
+        <option value="bow">Bow</option>
+        <option value="crossbow">Crossbow</option>
+        <option value="mace">Mace</option>
+      </select>
       <div class="input-group">
         <label for="dropTable">Drop Table</label>
         <input type="text" id="dropTable" name="dropTable" value="-">
@@ -214,47 +290,53 @@
     });
 
     generateBtn.addEventListener('click', () => {
-      const formData = new FormData(document.getElementById('generatorForm'));
-      const name = formData.get('name');
-      const entityType = formData.get('entityType');
-      const health = formData.get('health');
-      const damage = formData.get('damage');
-      const physicalRes = formData.get('physicalRes');
-      const lightningRes = formData.get('lightningRes');
-      const magicRes = formData.get('magicRes');
-      const fireRes = formData.get('fireRes');
-      const bleedRes = formData.get('bleedRes');
-      const shockRes = formData.get('shockRes');
-      const curseRes = formData.get('curseRes');
-      const burnRes = formData.get('burnRes');
-      const dropTable = formData.get('dropTable');
-      const attackSet = formData.get('attackSet');
-      const phaseChangeOption = formData.get('phaseChange');
-      const phaseChangePercentage = formData.get('phaseChangePercentage');
-      const phaseChangeAppear = formData.get('phaseChangeAppear');
-      const phaseNewBoss = formData.get('phaseNewBoss');
+  const formData = new FormData(document.getElementById('generatorForm'));
+  const name = formData.get('name');
+  const entityType = formData.get('entityType');
+  const health = formData.get('health');
+  const damage = formData.get('damage');
+  const speed = formData.get('speed');
+  const scale = formData.get('scale');
+  const helmet = formData.get('helmet');
+  const chestplate = formData.get('chestplate');
+  const leggings = formData.get('leggings');
+  const boots = formData.get('boots');
+  const weapon = formData.get('weapon');
+  const physicalRes = formData.get('physicalRes');
+  const lightningRes = formData.get('lightningRes');
+  const magicRes = formData.get('magicRes');
+  const fireRes = formData.get('fireRes');
+  const bleedRes = formData.get('bleedRes');
+  const shockRes = formData.get('shockRes');
+  const curseRes = formData.get('curseRes');
+  const burnRes = formData.get('burnRes');
+  const dropTable = formData.get('dropTable');
+  const attackSet = formData.get('attackSet');
+  const phaseChangeOption = formData.get('phaseChange');
+  const phaseChangePercentage = formData.get('phaseChangePercentage');
+  const phaseChangeAppear = formData.get('phaseChangeAppear');
+  const phaseNewBoss = formData.get('phaseNewBoss');
 
-      let result = `set {entities_stored::${name}} to "${entityType};${health};${damage};${physicalRes};${lightningRes};${magicRes};${fireRes};${bleedRes};${shockRes};${curseRes};${burnRes};${dropTable};${attackSet}`;
+  let result = `set {entities_stored::${name}} to "${entityType};${health};${damage};${physicalRes};${lightningRes};${magicRes};${fireRes};${bleedRes};${shockRes};${curseRes};${burnRes};${speed};${scale};${helmet};${chestplate};${leggings};${boots};${weapon};${dropTable};${attackSet}`;
 
-      const optionalParts = [];
+  const optionalParts = [];
 
-      if (phaseChangeOption !== 'none') {
-        optionalParts.push(`${phaseChangeOption};${phaseChangePercentage};${phaseChangeAppear}`);
-      }
+  if (phaseChangeOption !== 'none') {
+    optionalParts.push(`${phaseChangeOption};${phaseChangePercentage};${phaseChangeAppear}`);
+  }
 
-      if (phaseChangeOption == 'firstPhaseNewBoss') {
-        optionalParts.push(`${phaseNewBoss}`);
-      }
+  if (phaseChangeOption === 'firstPhaseNewBoss' || phaseChangeOption === 'secondPhaseNewBoss') {
+    optionalParts.push(`${phaseNewBoss}`);
+  }
 
-      if (optionalParts.length > 0) {
-        result += `;${optionalParts.join(';')}`;
-      }
+  if (optionalParts.length > 0) {
+    result += `;${optionalParts.join(';')}`;
+  }
 
-      
-      result += `"`;
+  result += `"`;
 
-      generatedCode.value = result;
-    });
+  generatedCode.value = result;
+});
 
     const entityTypeSearch = document.getElementById('entityTypeSearch');
     const entityType = document.getElementById('entityType');
